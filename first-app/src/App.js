@@ -12,19 +12,34 @@ class App extends Component {
     persons: [
       {name: 'Zach', age: 23},
       {name: 'Alli', age: 20},
-      {name: 'Matt', age: 25}
+      {name: 'Matt', age: 25},
+      {name: 'Danny'}
     ]
   }
 
+  // usually use Handler at the end of method in order to 
+  // show that this method is an event handler (like clicks or something)
+  switchNameHandler = () => {
+    console.log('Was Clicked');
+    /* cannot call 'this' because it will not refer to the class 'this'
+    given the nature of ES5 js. By using the ES6 syntax here, we work around the issue
+
+    */
+  }
+
+
   render() {
-    return (
+    return ( 
       <div className="App">
         <h1>Hello Alli!</h1>
         <p>Can nest JSX elements, but cannot really have more than one parent element</p>
-        <button>Switch Name</button>
+        {/* do not pass method with parentheses, that will execute the method at runtime not when clicked */}
+        <button onClick={this.switchNameHandler}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies: Racing</Person>
+        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}>My hobbies: Racing
+        </Person>
+        <Person name={this.state.persons[3].name}></Person>
       </div>
     );
 
