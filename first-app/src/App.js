@@ -18,7 +18,7 @@ class App extends Component {
 
   // usually use Handler at the end of method in order to 
   // show that this method is an event handler (like clicks or something)
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     //console.log('Was Clicked');
     /* cannot call 'this' because it will not refer to the class 'this'
     given the nature of ES5 js. By using the ES6 syntax here, we work around the issue
@@ -28,7 +28,7 @@ class App extends Component {
    // DON'T DO THIS, USE SPECIAL METHOD setState this.state.persons[0].name="zekahri"
     this.setState({
       persons: [
-        {name: 'Zachary', age: 23},
+        {name: newName, age: 23},
         {name: 'Allison', age: 20},
         {name: 'Matthew', age: 25},
         {name: 'Danny', age: 23}
@@ -41,8 +41,11 @@ class App extends Component {
       <div className="App">
         <h1>Hello Alli!</h1>
         <p>Can nest JSX elements, but cannot really have more than one parent element</p>
-        {/* do not pass method with parentheses, that will execute the method at runtime not when clicked */}
-        <button onClick={this.switchNameHandler}>Switch Name</button>
+        {/* do not pass method with parentheses, that will execute the method at runtime, not when clicked 
+        UNLESS we use an arrow function like we did here, which (if written on the same line)
+        we can ommit the return keyword (see section 2: Arrow Functions for more info)
+        */}
+        <button onClick={() => this.switchNameHandler('Zachary!!!!')}>Switch Name</button>
         <Person
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age} />
@@ -51,7 +54,7 @@ class App extends Component {
         age={this.state.persons[1].age} />
         <Person
         name={this.state.persons[2].name} 
-        age={this.state.persons[2].age} click={this.switchNameHandler}>
+        age={this.state.persons[2].age} click={this.switchNameHandler.bind(this, 'Matt!!!')}>
         My hobbies: Racing
         </Person>
       </div>
