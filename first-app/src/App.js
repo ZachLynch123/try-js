@@ -44,6 +44,7 @@ class App extends Component {
         {/* do not pass method with parentheses, that will execute the method at runtime, not when clicked 
         UNLESS we use an arrow function like we did here, which (if written on the same line)
         we can ommit the return keyword (see section 2: Arrow Functions for more info)
+        this way can be inefficient, so be mindful of that when building larger apps
         */}
         <button onClick={() => this.switchNameHandler('Zachary!!!!')}>Switch Name</button>
         <Person
