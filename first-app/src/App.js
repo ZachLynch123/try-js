@@ -48,6 +48,13 @@ class App extends Component {
 
 
   render() {
+
+    const style = {
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      cursor: 'pointer'
+    };
     return ( 
       <div className="App">
         <h1>Hello Alli!</h1>
@@ -57,7 +64,7 @@ class App extends Component {
         we can ommit the return keyword (see section 2: Arrow Functions for more info)
         this way can be inefficient, so be mindful of that when building larger apps
         */}
-        <button onClick={() => this.switchNameHandler('Zachary!!!!')}>Switch Name</button>
+        <button className="hello" style={style} onClick={() => this.switchNameHandler('Zachary!!!!')}>Switch Name</button>
         <Person
         name={this.state.persons[0].name} 
         age={this.state.persons[0].age} />
